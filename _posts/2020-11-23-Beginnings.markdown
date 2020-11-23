@@ -7,7 +7,7 @@ categories: General
 
 All the action is out there and the thing that gets built is in here. It is easy to make out the contours of the mountain but difficult to see the resolve of the climber. 
 
-I want to perfect thinking. Writing is the mountain that I am hoping to climb. 
+I want to perfect thinking. Writing is the mountain that I want to climb. 
 
 So let's begin...
 
