@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Beginnings"
+title:  "The Beginning"
 date:   2020-11-23 12:47:36 +0530
 categories: General
 ---
