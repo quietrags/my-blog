@@ -27,6 +27,8 @@ url: "https://quietrags.github.io" # the base hostname & protocol for your site,
 twitter_username: quietrags
 github_username:  quietrags
 
+author: Anurag Sahay
+
 # Build settings
 theme: minima
 plugins:
