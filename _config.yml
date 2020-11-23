@@ -30,7 +30,7 @@ twitter_username: quietrags
 github_username:  quietrags
 
 # Build settings
-theme: minima
+remote_theme: huangyz0918/moving
 plugins:
   - jekyll-feed
 
