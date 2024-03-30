@@ -5,7 +5,7 @@ date:   2024-03-30 8.43.00
 categories: Physics
 ---
 
-                        <h1>The Simplicity at the Heart of Quantum Mechanics<h1>
+                        # The Simplicity at the Heart of Quantum Mechanics 
 
 Quantum mechanics is often seen as one of the most complex and counterintuitive theories in all of physics. It describes a world that seems to defy our everyday intuitions, where particles can be in multiple places at once and the very act of observation affects the outcome of an experiment. And yet, at its core, quantum mechanics is built on a surprisingly simple idea.
 
