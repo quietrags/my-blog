@@ -4,22 +4,51 @@ layout: default
 ---
 
 <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
+  .container-404 {
+    margin: 100px auto;
     max-width: 600px;
     text-align: center;
+    padding: 60px 40px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
+  .container-404 h1 {
+    margin: 0 0 20px 0;
+    font-size: 6em;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -0.03em;
+    color: #7A6F5D;
+    font-weight: 700;
+  }
+  .container-404 p {
+    font-size: 1.2em;
+    color: #726B5F;
+    margin: 15px auto;
+  }
+  .container-404 a {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 28px;
+    background-color: #7A6F5D;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .container-404 a:hover {
+    background-color: #5A4735;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-bottom: none;
   }
 </style>
 
-<div class="container">
+<div class="container-404">
   <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+  <p><strong>Page not found</strong></p>
+  <p>The page you're looking for doesn't exist or has been moved.</p>
+  <a href="{{ site.baseurl }}/">Return Home</a>
 </div>
