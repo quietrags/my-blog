@@ -1,6 +1,6 @@
 # Site Settings
 title: Musings & Ramblings
-tagline: What I know, I am not aware of - until I speak or write it!
+subtitle: What I know, I am not aware of - until I speak or write it!
 description: >-
   Thoughts on AI, technology, and software engineering from Anurag Sahay,
   Group CTO - Data & AI at Nagarro.
@@ -8,32 +8,35 @@ description: >-
 url: "https://quietrags.github.io"
 baseurl: "/my-blog"
 
-# Theme (gem-based, not remote_theme - avoids compatibility issues)
-theme: jekyll-theme-chirpy
-
-# Force light theme only (no dark mode)
-theme_mode: light
+# Theme
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default"  # light skin
 
 # Author
-author: Anurag Sahay
-social:
-  name: Anurag Sahay
-  email: quietrags@gmail.com
+author:
+  name: "Anurag Sahay"
+  bio: "Group CTO - Data & AI at Nagarro"
   links:
-    - https://twitter.com/quietrags
-    - https://github.com/quietrags
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/quietrags"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/quietrags"
 
 # Timezone
 timezone: Asia/Kolkata
 
-# Avatar (optional - add later)
-# avatar: /assets/images/avatars/anurag.jpg
+# Reading time
+read_time: true
 
 # Table of contents
 toc: true
+toc_sticky: true
 
 # Pagination
 paginate: 10
+paginate_path: /page:num/
 
 # Build settings
 plugins:
@@ -41,6 +44,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-include-cache
 
 # Show posts with future dates
 future: true
@@ -55,16 +59,28 @@ exclude:
   - node_modules/
   - vendor/
 
-# Chirpy-specific settings
+# Defaults
 defaults:
   - scope:
       path: ""
       type: posts
     values:
-      layout: post
+      layout: single
+      show_date: true
+      read_time: true
       comments: false
       toc: true
-      pin: false
+      toc_sticky: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
 
-sass:
-  style: compressed
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/

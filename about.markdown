@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: single
 title: About
-icon: fas fa-info-circle
-order: 1
+permalink: /about/
+author_profile: true
 ---
 
 I'm Anurag Sahay, Group CTO - Data & AI at Nagarro.
