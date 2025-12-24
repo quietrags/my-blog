@@ -1,58 +1,71 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
+# Site Settings
 title: Musings & Ramblings
-email: quietrags@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  What i know, i am not aware of - until i speak or write it !
-baseurl: "/my-blog" # the subpath of your site, e.g. /blog
-url: "https://quietrags.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: quietrags
-github_username:  quietrags
+tagline: What I know, I am not aware of - until I speak or write it!
+description: >-
+  Thoughts on AI, technology, and software engineering from Anurag Sahay,
+  Group CTO - Data & AI at Nagarro.
 
+url: "https://quietrags.github.io"
+baseurl: "/my-blog"
+
+# Theme
+remote_theme: cotes2020/jekyll-theme-chirpy
+
+# Force light theme only (no dark mode)
+theme_mode: light
+
+# Author
 author: Anurag Sahay
+social:
+  name: Anurag Sahay
+  email: quietrags@gmail.com
+  links:
+    - https://twitter.com/quietrags
+    - https://github.com/quietrags
+
+# Timezone
+timezone: Asia/Kolkata
+
+# Avatar (optional - add later)
+# avatar: /assets/images/avatars/anurag.jpg
+
+# Table of contents
+toc: true
+
+# Pagination
+paginate: 10
 
 # Build settings
-theme: minima
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
 
 # Show posts with future dates
 future: true
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Chirpy-specific settings
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+      pin: false
+
+sass:
+  style: compressed

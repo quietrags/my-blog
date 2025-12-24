@@ -1,18 +1,21 @@
 ---
 layout: page
 title: About
-permalink: /about/
+icon: fas fa-info-circle
+order: 1
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I'm Anurag Sahay, Group CTO - Data & AI at Nagarro.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+This blog captures my thoughts, learnings, and explorations in AI, software engineering, and technology leadership. Most posts originate from research I've done or presentations I've given - refined and shared here for broader accessibility.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+## Topics I Write About
 
+- **AI & Agents**: Agentic systems, Claude Code, AI-assisted development
+- **Engineering Leadership**: CTO perspectives, team scaling, technical strategy
+- **Developer Productivity**: Tooling, workflows, code quality
 
-[jekyll-organization]: https://github.com/jekyll
+## Connect
+
+- GitHub: [@quietrags](https://github.com/quietrags)
+- Twitter: [@quietrags](https://twitter.com/quietrags)
