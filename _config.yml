@@ -38,6 +38,10 @@ toc_sticky: true
 paginate: 10
 paginate_path: /page:num/
 
+# Include _pages
+include:
+  - _pages
+
 # Build settings
 plugins:
   - jekyll-feed
