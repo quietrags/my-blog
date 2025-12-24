@@ -1,8 +1,8 @@
 ---
-layout: post
-title:  "The Beginning"
-date:   2020-11-23 12:47:36 +0530
+title: "The Beginning"
+date: 2020-11-23 12:47:36 +0530
 categories: General
+toc: false
 ---
 
 All the action is out there and the thing that gets built is in here. It is easy to make out the contours of the mountain but difficult to see the resolve of the climber. 

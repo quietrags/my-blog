@@ -1,8 +1,8 @@
 ---
-layout: post
-title: Code Execution with MCP - A Practical Guide
+title: "Code Execution with MCP - A Practical Guide"
 date: 2025-11-06 10:00:00 +0530
 categories: Technical
+excerpt: "Learn how to use MCP tools with sandbox commands to save 95%+ of your token budget on data-heavy tasks."
 ---
 
 I recently learned about a new pattern for using MCP tools with Claude. This post explains what it is and how you can use it today.
