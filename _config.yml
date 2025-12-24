@@ -8,8 +8,8 @@ description: >-
 url: "https://quietrags.github.io"
 baseurl: "/my-blog"
 
-# Theme
-remote_theme: cotes2020/jekyll-theme-chirpy
+# Theme (gem-based, not remote_theme - avoids compatibility issues)
+theme: jekyll-theme-chirpy
 
 # Force light theme only (no dark mode)
 theme_mode: light
@@ -37,7 +37,6 @@ paginate: 10
 
 # Build settings
 plugins:
-  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
