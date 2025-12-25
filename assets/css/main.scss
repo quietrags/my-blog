@@ -1,0 +1,85 @@
+---
+# Main SCSS file - required for Jekyll to process
+---
+
+@charset "utf-8";
+
+// Import the theme's styles first
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+// Custom font size overrides
+// Reduce base font size (affects everything proportionally)
+html {
+  font-size: 14px; // Default is 16px
+
+  @media (min-width: 64em) {
+    font-size: 15px; // Slightly larger on big screens, but still smaller than default 18px
+  }
+}
+
+// Post titles on index/archive pages
+.archive__item-title {
+  font-size: 1.1em !important; // Smaller than default
+}
+
+// Post excerpts on index page
+.archive__item-excerpt {
+  font-size: 0.85em;
+}
+
+// Individual post page - main title
+.page__title {
+  font-size: 1.8em; // Smaller than default ~2.5em
+}
+
+// Post content body text
+.page__content {
+  p, li, td {
+    font-size: 0.95em;
+  }
+
+  // Headings within posts
+  h1 {
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  h4, h5, h6 {
+    font-size: 1.1em;
+  }
+}
+
+// Table of contents - keep compact
+.toc__menu {
+  font-size: 0.85em;
+}
+
+// Keep masthead/navigation menu at original size
+.masthead {
+  font-size: 1rem; // Use rem to avoid inheritance from html reduction
+}
+
+.greedy-nav {
+  font-size: 1rem;
+
+  .visible-links a {
+    font-size: 0.9rem;
+  }
+}
+
+// Author sidebar
+.author__name {
+  font-size: 1rem;
+}
+
+.author__bio {
+  font-size: 0.85rem;
+}
