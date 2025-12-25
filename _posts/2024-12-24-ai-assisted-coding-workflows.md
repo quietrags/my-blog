@@ -4,6 +4,7 @@ date: 2024-12-24 10:00:00 +0530
 categories: [AI, Development]
 tags: [ai-coding, github-copilot, cursor, claude-code, workflows, productivity]
 toc: true
+excerpt: "I've been using AI coding assistants for the past year, and I've watched teams go from 26% productivity gains to negative productivity—sometimes in the same quarter. The difference isn't the tool. It's the workflow."
 ---
 
 I've been using AI coding assistants for the past year, and I've watched teams go from 26% productivity gains to negative productivity—sometimes in the same quarter. The difference isn't the tool. It's the workflow.

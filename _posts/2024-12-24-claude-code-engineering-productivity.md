@@ -5,6 +5,7 @@ categories: [AI, Engineering]
 tags: [claude-code, productivity, engineering-culture, ai-tools, developer-experience]
 author: anurag
 toc: true
+excerpt: "Anthropic's internal study reveals 60% adoption and 50% productivity gains—but also uncomfortable truths about skill atrophy and the supervision paradox. Here's what I learned."
 ---
 
 ## What Started This Journey
