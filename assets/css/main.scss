@@ -4,23 +4,28 @@
 
 @charset "utf-8";
 
-// Import the theme's styles first
+// Override theme color variables BEFORE importing
+$link-color: #111 !default;
+$link-color-hover: #444 !default;
+$link-color-visited: #111 !default;
+$text-color: #111 !default;
+
+// Import the theme's styles
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
 // Custom font size overrides
-// Reduce base font size (affects everything proportionally)
 html {
-  font-size: 14px; // Default is 16px
+  font-size: 14px;
 
   @media (min-width: 64em) {
-    font-size: 15px; // Slightly larger on big screens, but still smaller than default 18px
+    font-size: 15px;
   }
 }
 
 // Post titles on index/archive pages
 .archive__item-title {
-  font-size: 1.1em !important; // Smaller than default
+  font-size: 1.1em !important;
 }
 
 // Post excerpts on index page
@@ -30,7 +35,8 @@ html {
 
 // Individual post page - main title
 .page__title {
-  font-size: 1.8em; // Smaller than default ~2.5em
+  font-size: 1.8em;
+  color: #111;
 }
 
 // Post content body text
@@ -39,32 +45,20 @@ html {
     font-size: 0.95em;
   }
 
-  // Headings within posts
-  h1 {
-    font-size: 1.6em;
-  }
-
-  h2 {
-    font-size: 1.4em;
-  }
-
-  h3 {
-    font-size: 1.2em;
-  }
-
-  h4, h5, h6 {
-    font-size: 1.1em;
-  }
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.4em; }
+  h3 { font-size: 1.2em; }
+  h4, h5, h6 { font-size: 1.1em; }
 }
 
-// Table of contents - keep compact
+// Table of contents
 .toc__menu {
   font-size: 0.85em;
 }
 
-// Keep masthead/navigation menu at original size
+// Keep masthead/navigation at original size
 .masthead {
-  font-size: 1rem; // Use rem to avoid inheritance from html reduction
+  font-size: 1rem;
 }
 
 .greedy-nav {
@@ -84,74 +78,41 @@ html {
   font-size: 0.85rem;
 }
 
-// --- Black and white theme overrides ---
+// --- Black and white theme: remove all underlines ---
 
-// All links: black, no underline
+// All links
 a {
-  color: #111;
-  text-decoration: none;
-
-  &:hover {
-    color: #444;
-    text-decoration: none;
-  }
+  color: #111 !important;
+  text-decoration: none !important;
 
   &:visited {
-    color: #111;
+    color: #111 !important;
+  }
+
+  &:hover {
+    color: #444 !important;
+    text-decoration: none !important;
   }
 }
 
-// Blog post titles on index/archive
+// Blog post titles
 .archive__item-title a {
   color: #111 !important;
   text-decoration: none !important;
-
-  &:hover {
-    color: #444 !important;
-  }
-}
-
-// Page/post title
-.page__title {
-  color: #111;
 }
 
 // Headings
-h1, h2, h3, h4, h5, h6,
-.page__content h1, .page__content h2, .page__content h3,
-.page__content h4, .page__content h5, .page__content h6 {
-  color: #111;
+h1, h2, h3, h4, h5, h6 {
+  color: #111 !important;
 }
 
-// Masthead / navigation links
-.masthead__menu-item a,
-.greedy-nav a {
+// Inline links in post content: subtle bottom border on hover only
+.page__content a:not(.btn) {
   color: #111 !important;
   text-decoration: none !important;
+  border-bottom: 1px solid transparent;
 
   &:hover {
-    color: #444 !important;
-  }
-}
-
-// TOC links
-.toc a {
-  color: #333;
-  text-decoration: none;
-
-  &:hover {
-    color: #111;
-  }
-}
-
-// Inline links in post content - subtle underline on hover only
-.page__content a {
-  color: #111;
-  text-decoration: none;
-  border-bottom: 1px solid #ccc;
-
-  &:hover {
-    color: #444;
-    border-bottom-color: #888;
+    border-bottom-color: #999;
   }
 }
