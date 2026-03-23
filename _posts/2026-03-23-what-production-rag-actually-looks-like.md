@@ -2,7 +2,7 @@
 layout: single
 title: "What Production RAG Actually Looks Like"
 date: 2026-03-23
-categories: [AI, Engineering]
+categories: [AI]
 tags: [rag, production, langchain, llamaindex, haystack, postgres, pgvector, observability, mcp, cohere]
 toc: true
 excerpt: "RAG is not a use case. It is a pattern — one that shows up in practically every LLM application you build. The interesting question is what it takes to make it work reliably."
