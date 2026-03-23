@@ -83,3 +83,75 @@ html {
 .author__bio {
   font-size: 0.85rem;
 }
+
+// --- Black and white theme overrides ---
+
+// All links: black, no underline
+a {
+  color: #111;
+  text-decoration: none;
+
+  &:hover {
+    color: #444;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: #111;
+  }
+}
+
+// Blog post titles on index/archive
+.archive__item-title a {
+  color: #111 !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: #444 !important;
+  }
+}
+
+// Page/post title
+.page__title {
+  color: #111;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.page__content h1, .page__content h2, .page__content h3,
+.page__content h4, .page__content h5, .page__content h6 {
+  color: #111;
+}
+
+// Masthead / navigation links
+.masthead__menu-item a,
+.greedy-nav a {
+  color: #111 !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: #444 !important;
+  }
+}
+
+// TOC links
+.toc a {
+  color: #333;
+  text-decoration: none;
+
+  &:hover {
+    color: #111;
+  }
+}
+
+// Inline links in post content - subtle underline on hover only
+.page__content a {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+
+  &:hover {
+    color: #444;
+    border-bottom-color: #888;
+  }
+}
