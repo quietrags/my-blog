@@ -4,7 +4,7 @@ title: "Twelve Surfaces, One Model, and the Pathways Nobody Drew"
 date: 2026-03-23
 categories: [AI]
 tags: [claude, anthropic, developer-tools, workflows, product-design]
-toc: true
+toc: false
 excerpt: "Claude's product surface area keeps expanding. The official framing is 'same model, many surfaces.' What's missing is the map of how you actually move between them."
 ---
 
