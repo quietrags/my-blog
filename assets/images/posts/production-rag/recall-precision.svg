@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="320" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" fill="#111" font-size="14" font-weight="600">Two Ways Retrieval Fails</text>
+
+  <!-- Left panel: Poor Recall -->
+  <rect x="30" y="50" width="310" height="240" rx="6" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="185" y="76" text-anchor="middle" fill="#111" font-size="13" font-weight="600">Poor Recall</text>
+  <text x="185" y="94" text-anchor="middle" fill="#888" font-size="11">The answer never makes it to the model</text>
+
+  <!-- Chunks representation - left -->
+  <rect x="55" y="115" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="185" y="135" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <rect x="55" y="150" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="185" y="170" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <rect x="55" y="185" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="185" y="205" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <!-- The missed chunk shown outside/below -->
+  <rect x="55" y="230" width="260" height="30" rx="3" fill="none" stroke="#111" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="185" y="250" text-anchor="middle" fill="#111" font-size="10" font-weight="500">chunk with the answer (not retrieved)</text>
+
+  <!-- Right panel: Poor Precision -->
+  <rect x="380" y="50" width="310" height="240" rx="6" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="535" y="76" text-anchor="middle" fill="#111" font-size="13" font-weight="600">Poor Precision</text>
+  <text x="535" y="94" text-anchor="middle" fill="#888" font-size="11">The answer is buried in noise</text>
+
+  <!-- Chunks representation - right -->
+  <rect x="405" y="115" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="535" y="135" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <rect x="405" y="150" width="260" height="30" rx="3" fill="#111" stroke="none"/>
+  <text x="535" y="170" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">chunk with the answer</text>
+
+  <rect x="405" y="185" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="535" y="205" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <rect x="405" y="220" width="260" height="30" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <text x="535" y="240" text-anchor="middle" fill="#999" font-size="10">irrelevant chunk</text>
+
+  <!-- Bottom annotations -->
+  <text x="185" y="305" text-anchor="middle" fill="#666" font-size="10">Fix: better embeddings, chunking, or search</text>
+  <text x="535" y="305" text-anchor="middle" fill="#666" font-size="10">Fix: reranking, filtering, fewer chunks</text>
+</svg>
