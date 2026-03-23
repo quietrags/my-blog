@@ -4,115 +4,464 @@
 
 @charset "utf-8";
 
-// Override theme color variables BEFORE importing
-$link-color: #111 !default;
-$link-color-hover: #444 !default;
-$link-color-visited: #111 !default;
-$text-color: #111 !default;
+// === Color palette: grayscale only ===
+$background-color: #fdfdfd !default;
+$text-color: #222 !default;
+$muted-color: #888;
+$border-color: #e0e0e0;
+$link-color: #222 !default;
+$link-color-hover: #555 !default;
+$link-color-visited: #222 !default;
+$masthead-link-color: #222 !default;
+$masthead-link-color-hover: #555 !default;
+$footer-background-color: #fdfdfd !default;
+$primary-color: #222 !default;
+$code-background-color: #f6f6f6;
 
-// Import the theme's styles
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+// Import theme
+@import "minimal-mistakes/skins/default";
 @import "minimal-mistakes";
 
-// Custom font size overrides
+// === Typography ===
+
+// System font stack with slightly more refined choices
+$serif: "Georgia", "Times New Roman", serif;
+$sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$mono: "SF Mono", "Fira Code", "Cascadia Code", "Menlo", monospace;
+
 html {
-  font-size: 14px;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   @media (min-width: 64em) {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
-// Post titles on index/archive pages
-.archive__item-title {
-  font-size: 1.1em !important;
+body {
+  font-family: $sans;
+  color: $text-color;
+  background-color: $background-color;
 }
 
-// Post excerpts on index page
-.archive__item-excerpt {
-  font-size: 0.85em;
-}
-
-// Individual post page - main title
-.page__title {
-  font-size: 1.8em;
-  color: #111;
-}
-
-// Post content body text
-.page__content {
-  p, li, td {
-    font-size: 0.95em;
-  }
-
-  h1 { font-size: 1.6em; }
-  h2 { font-size: 1.4em; }
-  h3 { font-size: 1.2em; }
-  h4, h5, h6 { font-size: 1.1em; }
-}
-
-// Table of contents
-.toc__menu {
-  font-size: 0.85em;
-}
-
-// Keep masthead/navigation at original size
+// === Masthead: minimal and clean ===
 .masthead {
-  font-size: 1rem;
+  border-bottom: 1px solid $border-color;
+  background: $background-color;
+  font-size: 0.9rem;
+
+  &__inner-wrap {
+    max-width: 900px;
+  }
+}
+
+.site-title {
+  font-family: $sans;
+  font-weight: 600;
+  font-size: 1.1rem !important;
+  letter-spacing: -0.01em;
+  color: $text-color !important;
+}
+
+.site-subtitle {
+  font-size: 0.75rem;
+  color: $muted-color;
+  font-style: italic;
 }
 
 .greedy-nav {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  background: $background-color;
 
   .visible-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: $muted-color !important;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+
+    &:hover {
+      color: $text-color !important;
+    }
+
+    &::before {
+      background: transparent;
+    }
   }
 }
 
-// Author sidebar
+// === Page layout: wider reading column ===
+.page {
+  max-width: 720px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media (min-width: 64em) {
+    padding-right: 0;
+  }
+}
+
+// === Post title: large, clean, with space ===
+.page__title {
+  font-family: $sans;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: $text-color;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+
+  @media (min-width: 48em) {
+    font-size: 2.4rem;
+  }
+}
+
+// === Post meta (date, reading time) ===
+.page__meta {
+  font-size: 0.8rem;
+  color: $muted-color;
+  font-weight: 400;
+  margin-bottom: 2em;
+  letter-spacing: 0.01em;
+}
+
+// === Post content ===
+.page__content {
+  p, li, td {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: $text-color;
+  }
+
+  p {
+    margin-bottom: 1.4em;
+  }
+
+  // Headings: clean hierarchy
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $sans;
+    color: $text-color !important;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-top: 2.2em;
+    margin-bottom: 0.6em;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $border-color;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  // Blockquotes: elegant left border
+  blockquote {
+    border-left: 3px solid #ccc;
+    padding-left: 1.2em;
+    margin-left: 0;
+    color: #555;
+    font-style: italic;
+
+    p {
+      color: #555;
+    }
+  }
+
+  // Code: refined monospace
+  code {
+    font-family: $mono;
+    font-size: 0.85em;
+    background: $code-background-color;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 0.15em 0.35em;
+    color: #333;
+  }
+
+  pre {
+    background: #f6f6f6;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 1.2em;
+    line-height: 1.55;
+    overflow-x: auto;
+
+    code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+    }
+  }
+
+  // Horizontal rule: subtle
+  hr {
+    border: none;
+    border-top: 1px solid $border-color;
+    margin: 3em 0;
+  }
+
+  // Images and SVGs: full width with breathing room
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 2em auto;
+    border-radius: 2px;
+  }
+
+  // Lists
+  ul, ol {
+    margin-bottom: 1.4em;
+    padding-left: 1.5em;
+
+    li {
+      margin-bottom: 0.3em;
+    }
+  }
+
+  // Tables
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5em;
+    font-size: 0.9rem;
+
+    th, td {
+      padding: 0.6em 0.8em;
+      border: 1px solid $border-color;
+      text-align: left;
+    }
+
+    th {
+      background: #f8f8f8;
+      font-weight: 600;
+    }
+  }
+}
+
+// === Links: understated ===
+a {
+  color: $text-color !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
+
+  &:visited {
+    color: $text-color !important;
+  }
+
+  &:hover {
+    color: $link-color-hover !important;
+  }
+}
+
+// Post content links: subtle underline
+.page__content a:not(.btn):not(.pagination--pager) {
+  color: $text-color !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid #ccc;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-bottom-color: #555;
+  }
+}
+
+// === Archive / index page ===
+.archive__item {
+  margin-bottom: 1.8em;
+}
+
+.archive__item-title {
+  font-size: 1.15rem !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin-bottom: 0.15em;
+
+  a {
+    color: $text-color !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+
+    &:hover {
+      color: $link-color-hover !important;
+    }
+  }
+}
+
+.archive__item-excerpt {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.55;
+  margin-top: 0.3em;
+}
+
+// === Sidebar / Author ===
+.sidebar {
+  opacity: 1;
+}
+
+.author__avatar {
+  img {
+    border-radius: 50%;
+  }
+}
+
 .author__name {
+  font-family: $sans;
   font-size: 1rem;
+  font-weight: 600;
+  color: $text-color;
 }
 
 .author__bio {
+  font-size: 0.82rem;
+  color: $muted-color;
+  line-height: 1.5;
+}
+
+.author__urls-wrapper {
+  font-size: 0.82rem;
+
+  a {
+    color: $muted-color !important;
+
+    &:hover {
+      color: $text-color !important;
+    }
+  }
+}
+
+// === Table of contents: quiet and functional ===
+.toc {
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  .nav__title {
+    background: #f8f8f8;
+    color: $text-color;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+}
+
+.toc__menu {
+  font-size: 0.8rem;
+
+  a {
+    color: #666 !important;
+    border-bottom: none !important;
+
+    &:hover {
+      color: $text-color !important;
+    }
+  }
+}
+
+// === Pagination ===
+.pagination--pager {
+  color: $muted-color !important;
+  border: 1px solid $border-color !important;
+  border-radius: 3px;
   font-size: 0.85rem;
-}
-
-// --- Black and white theme: remove all underlines ---
-
-// All links
-a {
-  color: #111 !important;
-  text-decoration: none !important;
-
-  &:visited {
-    color: #111 !important;
-  }
+  background: transparent;
 
   &:hover {
-    color: #444 !important;
-    text-decoration: none !important;
+    color: $text-color !important;
+    background: #f8f8f8;
   }
 }
 
-// Blog post titles
-.archive__item-title a {
-  color: #111 !important;
-  text-decoration: none !important;
+// === Footer: minimal ===
+.page__footer {
+  border-top: 1px solid $border-color;
+  background: $background-color;
+  color: $muted-color;
+  margin-top: 4em;
+
+  footer {
+    max-width: 900px;
+  }
 }
 
-// Headings
-h1, h2, h3, h4, h5, h6 {
-  color: #111 !important;
+.page__footer-follow {
+  .social-icons {
+    .fa {
+      color: $muted-color;
+    }
+  }
 }
 
-// Inline links in post content: subtle bottom border on hover only
-.page__content a:not(.btn) {
-  color: #111 !important;
-  text-decoration: none !important;
-  border-bottom: 1px solid transparent;
+// === Taxonomy / category pages ===
+.taxonomy__section {
+  .archive__item-title {
+    font-size: 1rem !important;
+  }
+}
+
+// === Post navigation (previous/next) ===
+.page__related {
+  border-top: 1px solid $border-color;
+  margin-top: 3em;
+  padding-top: 1.5em;
+
+  .archive__item-title {
+    font-size: 0.95rem !important;
+  }
+}
+
+// === Excerpt on home page: italic ===
+.page__hero--overlay {
+  .page__lead {
+    font-style: italic;
+  }
+}
+
+// === Remove any remaining color accents ===
+.btn--primary,
+.btn--inverse {
+  background-color: $text-color;
+  color: white;
+  border-radius: 3px;
 
   &:hover {
-    border-bottom-color: #999;
+    background-color: #444;
+  }
+}
+
+// === Reading time icon ===
+.page__meta .icon {
+  color: $muted-color;
+}
+
+// === Notice boxes (if used) ===
+.notice {
+  background: #f8f8f8;
+  border-left: 3px solid #ccc;
+  color: $text-color;
+}
+
+// === Responsive: tighten on small screens ===
+@media (max-width: 48em) {
+  .page__title {
+    font-size: 1.6rem;
+  }
+
+  .page__content {
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.1rem; }
   }
 }
