@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="300" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#111">The feature that does not exist yet</text>
+
+  <!-- Left: Conversation sprawl -->
+  <rect x="30" y="55" width="240" height="220" rx="8" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="150" y="78" text-anchor="middle" font-size="12" font-weight="600" fill="#111">3 sessions of conversation</text>
+
+  <!-- Chat bubbles (simplified) -->
+  <rect x="50" y="95" width="130" height="18" rx="9" fill="#f0f0f0"/>
+  <text x="115" y="108" text-anchor="middle" font-size="8" fill="#888">what's the difference between...</text>
+
+  <rect x="90" y="120" width="160" height="18" rx="9" fill="#e8e8e8"/>
+  <text x="170" y="133" text-anchor="middle" font-size="8" fill="#888">here's how I'd frame the tradeoff...</text>
+
+  <rect x="50" y="145" width="110" height="18" rx="9" fill="#f0f0f0"/>
+  <text x="105" y="158" text-anchor="middle" font-size="8" fill="#888">what about at scale?</text>
+
+  <rect x="80" y="170" width="170" height="18" rx="9" fill="#e8e8e8"/>
+  <text x="165" y="183" text-anchor="middle" font-size="8" fill="#888">the key insight is that context access...</text>
+
+  <rect x="50" y="195" width="140" height="18" rx="9" fill="#f0f0f0"/>
+  <text x="120" y="208" text-anchor="middle" font-size="8" fill="#888">use the input-output framing...</text>
+
+  <rect x="70" y="220" width="180" height="18" rx="9" fill="#e8e8e8"/>
+  <text x="160" y="233" text-anchor="middle" font-size="8" fill="#888">right, so the routing decision is...</text>
+
+  <text x="150" y="260" text-anchor="middle" font-size="9" fill="#aaa">rich context, buried in history</text>
+
+  <!-- Arrow: synthesize -->
+  <line x1="280" y1="160" x2="370" y2="160" stroke="#111" stroke-width="1.5"/>
+  <polygon points="368,156 376,160 368,164" fill="#111"/>
+
+  <!-- Synthesis label -->
+  <rect x="296" y="126" width="60" height="22" rx="4" fill="#111"/>
+  <text x="326" y="141" text-anchor="middle" font-size="9" font-weight="600" fill="white">synth</text>
+
+  <!-- Right: Synthesized project -->
+  <rect x="385" y="55" width="300" height="220" rx="8" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="535" y="78" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Synthesized project</text>
+
+  <!-- Knowledge base -->
+  <rect x="405" y="95" width="260" height="46" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+  <text x="415" y="111" font-size="10" font-weight="600" fill="#111">Knowledge base</text>
+  <text x="415" y="128" font-size="9" fill="#666">Key frameworks, decisions, reference points</text>
+
+  <!-- Instructions -->
+  <rect x="405" y="150" width="260" height="46" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+  <text x="415" y="166" font-size="10" font-weight="600" fill="#111">Instructions</text>
+  <text x="415" y="183" font-size="9" fill="#666">How Claude learned to work with you on this</text>
+
+  <!-- Organized questions -->
+  <rect x="405" y="205" width="260" height="46" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+  <text x="415" y="221" font-size="10" font-weight="600" fill="#111">Organized questions</text>
+  <text x="415" y="238" font-size="9" fill="#666">Categorized by theme, answered and open</text>
+
+  <text x="535" y="268" text-anchor="middle" font-size="9" fill="#888">every new session starts here, not from zero</text>
+</svg>

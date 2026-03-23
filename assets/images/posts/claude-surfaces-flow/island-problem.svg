@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="340" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#111">Surfaces are islands</text>
+  <text x="360" y="46" text-anchor="middle" font-size="11" fill="#888">No programmatic bridge between them</text>
+
+  <!-- Island 1: Claude.ai Chat -->
+  <ellipse cx="120" cy="130" rx="90" ry="50" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="120" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Claude.ai</text>
+  <text x="120" y="142" text-anchor="middle" font-size="10" fill="#666">Chats + Projects</text>
+
+  <!-- Island 2: Claude Code -->
+  <ellipse cx="360" cy="110" rx="90" ry="50" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="360" y="105" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Claude Code</text>
+  <text x="360" y="122" text-anchor="middle" font-size="10" fill="#666">Terminal sessions</text>
+
+  <!-- Island 3: Cowork -->
+  <ellipse cx="580" cy="130" rx="90" ry="50" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="580" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Cowork</text>
+  <text x="580" y="142" text-anchor="middle" font-size="10" fill="#666">Local files</text>
+
+  <!-- Island 4: Desktop -->
+  <ellipse cx="220" cy="240" rx="90" ry="50" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="220" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Desktop App</text>
+  <text x="220" y="252" text-anchor="middle" font-size="10" fill="#666">Diagrams, artifacts</text>
+
+  <!-- Island 5: API -->
+  <ellipse cx="480" cy="240" rx="90" ry="50" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="480" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#111">API</text>
+  <text x="480" y="252" text-anchor="middle" font-size="10" fill="#666">Programmatic access</text>
+
+  <!-- Broken connections (dashed, faded) -->
+  <line x1="200" y1="115" x2="280" y2="110" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="440" y1="115" x2="500" y2="125" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="150" y1="170" x2="190" y2="200" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="340" y1="155" x2="260" y2="200" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="380" y1="155" x2="450" y2="200" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="310" y1="240" x2="390" y2="240" stroke="#ddd" stroke-width="1" stroke-dasharray="3,5"/>
+
+  <!-- Memory: thin layer -->
+  <rect x="140" y="306" width="440" height="24" rx="4" fill="white" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="360" y="322" text-anchor="middle" font-size="10" fill="#999">Memory: a thin layer of synthesized facts (not rich context)</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="420" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="360" y="32" text-anchor="middle" font-size="15" font-weight="600" fill="#111">Where do your inputs live?</text>
+
+  <!-- Input column -->
+  <text x="100" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#888" letter-spacing="1">INPUT</text>
+
+  <!-- Surface column -->
+  <text x="440" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#888" letter-spacing="1">SURFACE</text>
+
+  <!-- Example column -->
+  <text x="640" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#888" letter-spacing="1">EXAMPLE</text>
+
+  <!-- Row 1: In your head → Chat -->
+  <rect x="20" y="85" width="160" height="48" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="106" text-anchor="middle" font-size="12" font-weight="500" fill="#111">In your head</text>
+  <text x="100" y="122" text-anchor="middle" font-size="10" fill="#888">half-formed, vague</text>
+
+  <line x1="180" y1="109" x2="330" y2="109" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="328,105 336,109 328,113" fill="#999"/>
+
+  <rect x="336" y="85" width="140" height="48" rx="6" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="406" y="113" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Chat</text>
+
+  <text x="640" y="113" text-anchor="middle" font-size="10" fill="#666" font-style="italic">"What's the difference</text>
+  <text x="640" y="125" text-anchor="middle" font-size="10" fill="#666" font-style="italic">between RAG and fine-tuning?"</text>
+
+  <!-- Row 2: Documents → Projects -->
+  <rect x="20" y="150" width="160" height="48" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="171" text-anchor="middle" font-size="12" font-weight="500" fill="#111">Documents</text>
+  <text x="100" y="187" text-anchor="middle" font-size="10" fill="#888">PDFs, specs, reference</text>
+
+  <line x1="180" y1="174" x2="330" y2="174" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="328,170 336,174 328,178" fill="#999"/>
+
+  <rect x="336" y="150" width="140" height="48" rx="6" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="406" y="178" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Projects</text>
+
+  <text x="640" y="178" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Client engagement with</text>
+  <text x="640" y="190" text-anchor="middle" font-size="10" fill="#666" font-style="italic">account history and briefs</text>
+
+  <!-- Row 3: Files on disk → Cowork -->
+  <rect x="20" y="215" width="160" height="48" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="236" text-anchor="middle" font-size="12" font-weight="500" fill="#111">Files on disk</text>
+  <text x="100" y="252" text-anchor="middle" font-size="10" fill="#888">local folders, mixed formats</text>
+
+  <line x1="180" y1="239" x2="330" y2="239" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="328,235 336,239 328,243" fill="#999"/>
+
+  <rect x="336" y="215" width="140" height="48" rx="6" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="406" y="243" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Cowork</text>
+
+  <text x="640" y="243" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Synthesize meeting notes</text>
+  <text x="640" y="255" text-anchor="middle" font-size="10" fill="#666" font-style="italic">into a project brief</text>
+
+  <!-- Row 4: Code → Claude Code -->
+  <rect x="20" y="280" width="160" height="48" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="301" text-anchor="middle" font-size="12" font-weight="500" fill="#111">Code</text>
+  <text x="100" y="317" text-anchor="middle" font-size="10" fill="#888">repos, tests, builds</text>
+
+  <line x1="180" y1="304" x2="330" y2="304" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="328,300 336,304 328,308" fill="#999"/>
+
+  <rect x="336" y="280" width="140" height="48" rx="6" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="406" y="308" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Claude Code</text>
+
+  <text x="640" y="308" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Refactor auth module,</text>
+  <text x="640" y="320" text-anchor="middle" font-size="10" fill="#666" font-style="italic">add test coverage</text>
+
+  <!-- Row 5: On the web → Research -->
+  <rect x="20" y="345" width="160" height="48" rx="6" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="366" text-anchor="middle" font-size="12" font-weight="500" fill="#111">On the web</text>
+  <text x="100" y="382" text-anchor="middle" font-size="10" fill="#888">scattered, multi-source</text>
+
+  <line x1="180" y1="369" x2="330" y2="369" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <polygon points="328,365 336,369 328,373" fill="#999"/>
+
+  <rect x="336" y="345" width="140" height="48" rx="6" fill="white" stroke="#111" stroke-width="1.5"/>
+  <text x="406" y="373" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Research</text>
+
+  <text x="640" y="373" text-anchor="middle" font-size="10" fill="#666" font-style="italic">"What are companies doing</text>
+  <text x="640" y="385" text-anchor="middle" font-size="10" fill="#666" font-style="italic">with agentic workflows?"</text>
+
+  <!-- Footer -->
+  <text x="360" y="412" text-anchor="middle" font-size="10" fill="#aaa">This covers ~80% of routing decisions.</text>
+</svg>

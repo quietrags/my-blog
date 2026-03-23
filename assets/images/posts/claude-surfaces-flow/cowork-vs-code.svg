@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="260" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#111">Cowork vs Claude Code: clear on paper, blurry in practice</text>
+
+  <!-- Headers -->
+  <text x="200" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Cowork</text>
+  <text x="520" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#111">Claude Code</text>
+
+  <!-- Divider -->
+  <line x1="360" y1="50" x2="360" y2="245" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Cowork attributes -->
+  <text x="60" y="90" font-size="10" fill="#666">Starting point</text>
+  <text x="60" y="106" font-size="11" font-weight="500" fill="#111">Files and folders</text>
+
+  <text x="60" y="134" font-size="10" fill="#666">Mental model</text>
+  <text x="60" y="150" font-size="11" font-weight="500" fill="#111">Document transformation</text>
+
+  <text x="60" y="178" font-size="10" fill="#666">Assumes</text>
+  <text x="60" y="194" font-size="11" font-weight="500" fill="#111">No dev workflow</text>
+
+  <text x="60" y="222" font-size="10" fill="#666">Example</text>
+  <text x="60" y="238" font-size="11" font-weight="500" fill="#111">Organize 50 meeting notes into a brief</text>
+
+  <!-- Claude Code attributes -->
+  <text x="380" y="90" font-size="10" fill="#666">Starting point</text>
+  <text x="380" y="106" font-size="11" font-weight="500" fill="#111">Repository with code</text>
+
+  <text x="380" y="134" font-size="10" fill="#666">Mental model</text>
+  <text x="380" y="150" font-size="11" font-weight="500" fill="#111">Software development</text>
+
+  <text x="380" y="178" font-size="10" fill="#666">Assumes</text>
+  <text x="380" y="194" font-size="11" font-weight="500" fill="#111">Git, tests, build systems</text>
+
+  <text x="380" y="222" font-size="10" fill="#666">Example</text>
+  <text x="380" y="238" font-size="11" font-weight="500" fill="#111">Refactor auth module, add test coverage</text>
+</svg>

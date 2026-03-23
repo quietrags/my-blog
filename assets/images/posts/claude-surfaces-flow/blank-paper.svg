@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="280" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#111">The same task, two surfaces</text>
+  <text x="360" y="46" text-anchor="middle" font-size="11" fill="#888">"Draw me a diagram of how the auth flow works"</text>
+
+  <!-- Left: Claude Code -->
+  <rect x="30" y="65" width="310" height="200" rx="8" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="185" y="88" text-anchor="middle" font-size="13" font-weight="600" fill="#111">Claude Code</text>
+
+  <!-- Terminal mockup -->
+  <rect x="50" y="100" width="270" height="150" rx="4" fill="#1a1a1a"/>
+  <circle cx="64" cy="112" r="4" fill="#ff5f57"/>
+  <circle cx="76" cy="112" r="4" fill="#febc2e"/>
+  <circle cx="88" cy="112" r="4" fill="#28c840"/>
+
+  <text x="60" y="134" font-size="9" fill="#aaa" font-family="monospace">$ "Draw an auth flow diagram"</text>
+  <text x="60" y="150" font-size="9" fill="#666" font-family="monospace">What format? HTML, SVG, Mermaid?</text>
+  <text x="60" y="166" font-size="9" fill="#aaa" font-family="monospace">$ "SVG please"</text>
+  <text x="60" y="182" font-size="9" fill="#666" font-family="monospace">What dimensions? Color scheme?</text>
+  <text x="60" y="198" font-size="9" fill="#aaa" font-family="monospace">$ "720x400, grayscale"</text>
+  <text x="60" y="214" font-size="9" fill="#666" font-family="monospace">Writing auth-flow.svg...</text>
+  <text x="60" y="230" font-size="9" fill="#aaa" font-family="monospace">$ "Move the token box left"</text>
+  <text x="60" y="242" font-size="9" fill="#555" font-family="monospace">... (round 4 of iteration)</text>
+
+  <!-- Right: Desktop -->
+  <rect x="380" y="65" width="310" height="200" rx="8" fill="white" stroke="#ccc" stroke-width="1"/>
+  <text x="535" y="88" text-anchor="middle" font-size="13" font-weight="600" fill="#111">Claude Desktop</text>
+
+  <!-- Desktop mockup with diagram -->
+  <rect x="400" y="100" width="270" height="150" rx="4" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Simple diagram inside -->
+  <rect x="460" y="115" width="70" height="28" rx="4" fill="white" stroke="#111" stroke-width="1"/>
+  <text x="495" y="133" text-anchor="middle" font-size="9" fill="#111">User</text>
+
+  <line x1="495" y1="143" x2="495" y2="158" stroke="#111" stroke-width="1"/>
+  <polygon points="491,156 495,164 499,156" fill="#111"/>
+
+  <rect x="460" y="166" width="70" height="28" rx="4" fill="white" stroke="#111" stroke-width="1"/>
+  <text x="495" y="184" text-anchor="middle" font-size="9" fill="#111">Auth Server</text>
+
+  <line x1="530" y1="180" x2="570" y2="180" stroke="#111" stroke-width="1"/>
+  <polygon points="568,176 576,180 568,184" fill="#111"/>
+
+  <rect x="578" y="166" width="70" height="28" rx="4" fill="white" stroke="#111" stroke-width="1"/>
+  <text x="613" y="184" text-anchor="middle" font-size="9" fill="#111">Token Store</text>
+
+  <line x1="495" y1="194" x2="495" y2="209" stroke="#111" stroke-width="1"/>
+  <polygon points="491,207 495,215 499,207" fill="#111"/>
+
+  <rect x="460" y="217" width="70" height="24" rx="4" fill="white" stroke="#111" stroke-width="1"/>
+  <text x="495" y="233" text-anchor="middle" font-size="9" fill="#111">Dashboard</text>
+
+  <!-- Labels -->
+  <text x="430" y="138" font-size="9" fill="#888" font-style="italic">drawn</text>
+  <text x="418" y="150" font-size="9" fill="#888" font-style="italic">instantly</text>
+</svg>
