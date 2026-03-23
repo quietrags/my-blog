@@ -5,80 +5,117 @@
 @charset "utf-8";
 
 // === Color palette: grayscale only ===
-$background-color: #fdfdfd !default;
-$text-color: #222 !default;
-$muted-color: #888;
+$background-color: #fafafa !default;
+$text-color: #1a1a1a !default;
+$muted-color: #999;
 $border-color: #e0e0e0;
-$link-color: #222 !default;
-$link-color-hover: #555 !default;
-$link-color-visited: #222 !default;
-$masthead-link-color: #222 !default;
-$masthead-link-color-hover: #555 !default;
-$footer-background-color: #fdfdfd !default;
-$primary-color: #222 !default;
-$code-background-color: #f6f6f6;
+$link-color: #1a1a1a !default;
+$link-color-hover: #666 !default;
+$link-color-visited: #1a1a1a !default;
+$masthead-link-color: #1a1a1a !default;
+$masthead-link-color-hover: #666 !default;
+$footer-background-color: #fafafa !default;
+$primary-color: #1a1a1a !default;
 
 // Import theme
 @import "minimal-mistakes/skins/default";
 @import "minimal-mistakes";
 
-// === Typography ===
+// === Fonts ===
+// Serif for body (editorial), sans for headings (modern), mono for code
+$serif: "Georgia", "Cambria", "Times New Roman", serif;
+$sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$mono: "SF Mono", "Fira Code", "Menlo", monospace;
 
-// System font stack with slightly more refined choices
-$serif: "Georgia", "Times New Roman", serif;
-$sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-$mono: "SF Mono", "Fira Code", "Cascadia Code", "Menlo", monospace;
-
+// === Base ===
 html {
-  font-size: 15px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (min-width: 64em) {
-    font-size: 16px;
-  }
 }
 
 body {
-  font-family: $sans;
+  font-family: $serif;
   color: $text-color;
   background-color: $background-color;
 }
 
-// === Masthead: minimal and clean ===
+// === LAYOUT: Remove sidebar, center content ===
+// Override the two-column layout to a single centered column
+.sidebar {
+  display: none !important;
+}
+
+// Make the page use full width without sidebar offset
+#main {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (min-width: 64em) {
+    max-width: 740px;
+    float: none;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.page {
+  float: none !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+// Also fix the archive/index layout
+.archive {
+  float: none !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+// === Masthead: thin, quiet ===
 .masthead {
   border-bottom: 1px solid $border-color;
   background: $background-color;
-  font-size: 0.9rem;
+  font-family: $sans;
+  font-size: 0.85rem;
+  padding: 0.6em 0;
 
   &__inner-wrap {
-    max-width: 900px;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 }
 
 .site-title {
   font-family: $sans;
   font-weight: 600;
-  font-size: 1.1rem !important;
-  letter-spacing: -0.01em;
+  font-size: 1rem !important;
+  letter-spacing: 0.01em;
   color: $text-color !important;
 }
 
 .site-subtitle {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: $muted-color;
   font-style: italic;
+  font-family: $serif;
 }
 
 .greedy-nav {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   background: $background-color;
 
   .visible-links a {
-    font-size: 0.85rem;
+    font-family: $sans;
+    font-size: 0.8rem;
     color: $muted-color !important;
     font-weight: 400;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     text-transform: lowercase;
 
     &:hover {
@@ -86,115 +123,114 @@ body {
     }
 
     &::before {
-      background: transparent;
+      background: transparent !important;
     }
   }
 }
 
-// === Page layout: wider reading column ===
-.page {
-  max-width: 720px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  @media (min-width: 64em) {
-    padding-right: 0;
-  }
-}
-
-// === Post title: large, clean, with space ===
+// === Post title ===
 .page__title {
   font-family: $sans;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   color: $text-color;
-  margin-top: 0.5em;
-  margin-bottom: 0.2em;
+  margin-top: 1.5em;
+  margin-bottom: 0.15em;
 
   @media (min-width: 48em) {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 }
 
-// === Post meta (date, reading time) ===
+// === Post meta ===
 .page__meta {
-  font-size: 0.8rem;
-  color: $muted-color;
+  font-family: $sans;
+  font-size: 0.78rem;
+  color: #aaa;
   font-weight: 400;
-  margin-bottom: 2em;
-  letter-spacing: 0.01em;
+  margin-bottom: 2.5em;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 1.5em;
 }
 
 // === Post content ===
 .page__content {
   p, li, td {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: $text-color;
+    font-family: $serif;
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: #2a2a2a;
   }
 
   p {
-    margin-bottom: 1.4em;
+    margin-bottom: 1.5em;
   }
 
-  // Headings: clean hierarchy
+  // Headings: sans-serif contrast
   h1, h2, h3, h4, h5, h6 {
     font-family: $sans;
     color: $text-color !important;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-top: 2.2em;
-    margin-bottom: 0.6em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
   }
 
   h2 {
-    font-size: 1.4rem;
-    padding-bottom: 0.3em;
+    font-size: 1.5rem;
+    margin-top: 3em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.4em;
     border-bottom: 1px solid $border-color;
   }
 
   h3 {
     font-size: 1.15rem;
+    margin-top: 2.2em;
+    margin-bottom: 0.5em;
   }
 
   h4, h5, h6 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    margin-top: 1.8em;
+    margin-bottom: 0.4em;
   }
 
-  // Blockquotes: elegant left border
+  // Blockquotes: elegant
   blockquote {
-    border-left: 3px solid #ccc;
-    padding-left: 1.2em;
+    border-left: 2px solid #ccc;
+    padding-left: 1.3em;
+    margin: 1.8em 0;
     margin-left: 0;
-    color: #555;
-    font-style: italic;
 
     p {
       color: #555;
+      font-style: italic;
+      font-size: 1.02rem;
     }
   }
 
-  // Code: refined monospace
+  // Code
   code {
     font-family: $mono;
-    font-size: 0.85em;
-    background: $code-background-color;
-    border: 1px solid #eee;
+    font-size: 0.82em;
+    background: #f0f0f0;
+    border: none;
     border-radius: 3px;
-    padding: 0.15em 0.35em;
+    padding: 0.15em 0.4em;
     color: #333;
   }
 
   pre {
-    background: #f6f6f6;
-    border: 1px solid #e8e8e8;
+    background: #f4f4f4;
+    border: 1px solid #e4e4e4;
     border-radius: 4px;
-    padding: 1.2em;
-    line-height: 1.55;
+    padding: 1.3em 1.5em;
+    line-height: 1.6;
     overflow-x: auto;
+    margin: 2em 0;
 
     code {
       background: none;
@@ -204,28 +240,28 @@ body {
     }
   }
 
-  // Horizontal rule: subtle
+  // Horizontal rule
   hr {
     border: none;
-    border-top: 1px solid $border-color;
-    margin: 3em 0;
+    border-top: 1px solid #ddd;
+    margin: 3.5em 0;
   }
 
-  // Images and SVGs: full width with breathing room
+  // Images and SVGs: breathing room
   img {
     display: block;
     max-width: 100%;
-    margin: 2em auto;
+    margin: 2.5em auto;
     border-radius: 2px;
   }
 
   // Lists
   ul, ol {
-    margin-bottom: 1.4em;
-    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.4em;
 
     li {
-      margin-bottom: 0.3em;
+      margin-bottom: 0.35em;
     }
   }
 
@@ -233,23 +269,24 @@ body {
   table {
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 1.5em;
-    font-size: 0.9rem;
+    margin: 2em 0;
+    font-family: $sans;
+    font-size: 0.88rem;
 
     th, td {
-      padding: 0.6em 0.8em;
+      padding: 0.65em 0.9em;
       border: 1px solid $border-color;
       text-align: left;
     }
 
     th {
-      background: #f8f8f8;
+      background: #f5f5f5;
       font-weight: 600;
     }
   }
 }
 
-// === Links: understated ===
+// === Links ===
 a {
   color: $text-color !important;
   text-decoration: none !important;
@@ -264,7 +301,7 @@ a {
   }
 }
 
-// Post content links: subtle underline
+// Post content links: understated underline
 .page__content a:not(.btn):not(.pagination--pager) {
   color: $text-color !important;
   text-decoration: none !important;
@@ -276,17 +313,66 @@ a {
   }
 }
 
-// === Archive / index page ===
+// === TOC: inline, not overlapping ===
+.toc {
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  margin-bottom: 2em;
+  float: none !important;
+  width: 100% !important;
+  position: relative !important;
+  top: auto !important;
+
+  .nav__title {
+    background: #f5f5f5;
+    color: $text-color;
+    font-family: $sans;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.5em 0.8em;
+  }
+}
+
+.toc__menu {
+  font-family: $sans;
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  a {
+    color: #777 !important;
+    border-bottom: none !important;
+
+    &:hover {
+      color: $text-color !important;
+    }
+  }
+}
+
+// Disable sticky TOC
+.toc.toc--sticky {
+  position: relative !important;
+  top: auto !important;
+  float: none !important;
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+// === Archive / index ===
 .archive__item {
-  margin-bottom: 1.8em;
+  margin-bottom: 2.2em;
 }
 
 .archive__item-title {
-  font-size: 1.15rem !important;
-  font-weight: 600;
+  font-family: $sans;
+  font-size: 1.2rem !important;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  line-height: 1.35;
-  margin-bottom: 0.15em;
+  line-height: 1.3;
+  margin-bottom: 0.1em;
 
   a {
     color: $text-color !important;
@@ -300,88 +386,25 @@ a {
 }
 
 .archive__item-excerpt {
-  font-size: 0.88rem;
+  font-family: $serif;
+  font-size: 0.92rem;
   color: #666;
-  line-height: 1.55;
-  margin-top: 0.3em;
-}
-
-// === Sidebar / Author ===
-.sidebar {
-  opacity: 1;
-}
-
-.author__avatar {
-  img {
-    border-radius: 50%;
-  }
-}
-
-.author__name {
-  font-family: $sans;
-  font-size: 1rem;
-  font-weight: 600;
-  color: $text-color;
-}
-
-.author__bio {
-  font-size: 0.82rem;
-  color: $muted-color;
-  line-height: 1.5;
-}
-
-.author__urls-wrapper {
-  font-size: 0.82rem;
-
-  a {
-    color: $muted-color !important;
-
-    &:hover {
-      color: $text-color !important;
-    }
-  }
-}
-
-// === Table of contents: quiet and functional ===
-.toc {
-  background: transparent;
-  border: 1px solid $border-color;
-  border-radius: 4px;
-
-  .nav__title {
-    background: #f8f8f8;
-    color: $text-color;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-}
-
-.toc__menu {
-  font-size: 0.8rem;
-
-  a {
-    color: #666 !important;
-    border-bottom: none !important;
-
-    &:hover {
-      color: $text-color !important;
-    }
-  }
+  line-height: 1.6;
+  margin-top: 0.25em;
 }
 
 // === Pagination ===
 .pagination--pager {
+  font-family: $sans;
   color: $muted-color !important;
   border: 1px solid $border-color !important;
   border-radius: 3px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   background: transparent;
 
   &:hover {
     color: $text-color !important;
-    background: #f8f8f8;
+    background: #f5f5f5;
   }
 }
 
@@ -389,33 +412,27 @@ a {
 .page__footer {
   border-top: 1px solid $border-color;
   background: $background-color;
-  color: $muted-color;
+  color: #bbb;
   margin-top: 4em;
+  font-family: $sans;
+  font-size: 0.8rem;
 
   footer {
-    max-width: 900px;
+    max-width: 740px;
+    margin: 0 auto;
   }
 }
 
 .page__footer-follow {
-  .social-icons {
-    .fa {
-      color: $muted-color;
-    }
+  .social-icons .fa {
+    color: #bbb;
   }
 }
 
-// === Taxonomy / category pages ===
-.taxonomy__section {
-  .archive__item-title {
-    font-size: 1rem !important;
-  }
-}
-
-// === Post navigation (previous/next) ===
+// === Post navigation ===
 .page__related {
   border-top: 1px solid $border-color;
-  margin-top: 3em;
+  margin-top: 3.5em;
   padding-top: 1.5em;
 
   .archive__item-title {
@@ -423,16 +440,10 @@ a {
   }
 }
 
-// === Excerpt on home page: italic ===
-.page__hero--overlay {
-  .page__lead {
-    font-style: italic;
-  }
-}
-
-// === Remove any remaining color accents ===
+// === Buttons ===
 .btn--primary,
 .btn--inverse {
+  font-family: $sans;
   background-color: $text-color;
   color: white;
   border-radius: 3px;
@@ -442,26 +453,48 @@ a {
   }
 }
 
-// === Reading time icon ===
-.page__meta .icon {
-  color: $muted-color;
+// === Author info (in case it shows inline) ===
+.author__name {
+  font-family: $sans;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-// === Notice boxes (if used) ===
+.author__bio {
+  font-family: $serif;
+  font-size: 0.82rem;
+  color: $muted-color;
+  font-style: italic;
+}
+
+// === Notice boxes ===
 .notice {
-  background: #f8f8f8;
-  border-left: 3px solid #ccc;
+  font-family: $serif;
+  background: #f5f5f5;
+  border-left: 2px solid #ccc;
   color: $text-color;
 }
 
-// === Responsive: tighten on small screens ===
+// === Source attribution at bottom (italic paragraph after hr) ===
+.page__content hr + p {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+// === Responsive ===
 @media (max-width: 48em) {
   .page__title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    margin-top: 1em;
   }
 
   .page__content {
-    h2 { font-size: 1.25rem; }
-    h3 { font-size: 1.1rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.08rem; }
+  }
+
+  #main {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
