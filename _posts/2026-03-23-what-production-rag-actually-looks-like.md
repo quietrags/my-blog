@@ -3,7 +3,7 @@ layout: single
 title: "What Production RAG Actually Looks Like"
 date: 2026-03-23
 categories: [AI, Engineering]
-tags: [rag, production, postgres, pgvector, observability, mcp]
+tags: [rag, production, langchain, llamaindex, haystack, postgres, pgvector, observability, mcp, cohere]
 toc: true
 excerpt: "RAG is not a use case. It is a pattern — one that shows up in practically every LLM application you build. The interesting question is what it takes to make it work reliably."
 ---
@@ -43,6 +43,22 @@ The picture I now carry in my head looks something like this:
 
 The bottom row is where frameworks earn their place — as interchangeable components. The top row is yours. You decide what runs in what order, what gets logged, what gets retried, and what gets skipped. That separation is what makes the system debuggable.
 
+## Knowing the Primitives
+
+Once you accept that the orchestration is yours, the next question is: which framework primitives are actually worth using? I spent some time going through the docs to understand which parts are leaf-node utilities versus "framework taking the wheel."
+
+From **LangChain**, the useful primitives are narrow and well-defined. Document loaders like `PyMuPDFLoader` for complex PDFs or `UnstructuredHTMLLoader` for web pages give you standard Document objects, then your code takes over. `RecursiveCharacterTextSplitter` handles chunking by splitting on paragraph breaks, then sentences, then characters as a fallback. Embedding wrappers give you a consistent `.embed_documents()` interface across OpenAI, Cohere, and HuggingFace — swapping providers becomes a config change. Chat model wrappers (`ChatOpenAI`, `ChatAnthropic`, `ChatGoogleGenerativeAI`) all expose the same `.invoke(messages)` interface, which is what makes a factory pattern work cleanly. What to avoid: chains like `RetrievalQAChain` and LCEL's pipe `|` operator. These take the control flow away from you.
+
+**LlamaIndex** goes deeper on ingestion and retrieval. Its `SimpleDirectoryReader` auto-detects and loads PDFs, Word documents, CSVs, and markdown from a folder — more capable out of the box than LangChain's individual loaders. More interesting is `SentenceWindowNodeParser`, which stores each sentence as a retrievable node but attaches surrounding sentences as context. Retrieval finds the right sentence; generation sees its neighbourhood. This improves answer quality without bloating what you retrieve. And `LlamaParse`, their cloud parser, is widely considered the best available option for complex documents with tables, figures, and multi-column layouts. People use it as a standalone primitive even when they are not using the rest of LlamaIndex.
+
+**Haystack** is well-aligned with the explicit control flow philosophy. Every component is typed and testable with declared inputs and outputs. Its `BM25Retriever` provides classic keyword-based retrieval. Combining BM25 with vector search — hybrid retrieval — is a well-known production pattern that improves recall. Its evaluator components (`FaithfulnessEvaluator`, `ContextRelevanceEvaluator`) are drop-in steps for measuring retrieval and generation quality, which is genuinely underrated for production use.
+
+**Cohere Rerank** is arguably the most widely used standalone primitive in the RAG ecosystem, used regardless of framework. The pattern is a two-stage approach: vector search returns the top 50 candidates quickly but imprecisely, then Cohere's Rerank model re-scores them with much higher accuracy and returns the best 5. Fast coarse retrieval followed by slow precise reranking. It is one of the most reliable quality improvements you can add to a RAG pipeline.
+
+**Unstructured** is the most respected open-source library for parsing real-world messy documents. Its advantage over simpler loaders: it understands document structure. It identifies titles, tables, headers, narrative text, and list items as separate typed elements — not just one blob of text. Structure-aware parsing lets you write smarter chunking logic, like never splitting a table across two chunks.
+
+The mental model: think of these as a layered toolkit where none of the layers need to know about each other. Parsing, chunking, embedding, storage, retrieval, reranking, generation — you pick the best tool for each layer independently, and your orchestration loop ties them together.
+
 ## One Database, Many Questions
 
 Here is something I did not expect to find so interesting: the choice to use Postgres with pgvector instead of a dedicated vector database.
@@ -80,7 +96,23 @@ It is an unglamorous property. But its absence is the kind of thing that produce
 
 ## Where Quality Is Actually Decided
 
-The idea I keep coming back to is the distinction between recall and precision at the chunk level.
+Retrieval is not one step. It is at least four, and each can fail independently:
+
+```python
+async def retrieve(query, top_k=5, rerank=False):
+    processed = preprocess_query(query)          # clean the input
+    embedding = embed_query(processed)           # convert to vector
+    results   = search_similar(embedding, top_k) # find nearest chunks
+    if rerank:
+        results = rerank_results(query, results) # re-score with precision
+    return results
+```
+
+Preprocessing cleans the raw query — typos, filler words, phrasing that does not match your documents. Embedding converts it to a vector using the same model used at ingestion. Similarity search finds the nearest chunk vectors in the database. And reranking, if enabled, re-scores the top candidates using a model like Cohere Rerank that reads actual text rather than just comparing vectors — much more accurate, but slower.
+
+When an answer is wrong, this structure tells you where to look. Was preprocessing losing important terms? Did the embedding model fail to capture the domain? Did the right chunks exist but not make the top K? Each is a different diagnosis with a different fix. Without explicit steps, all of these look the same — you just get a wrong answer.
+
+But the deeper idea I keep coming back to is the distinction between recall and precision at the chunk level.
 
 When the system retrieves chunks in response to a query, two things can go wrong independently:
 
@@ -95,6 +127,14 @@ The diagnostic rule that follows is simple but powerful:
 ![Diagnostic flowchart: is the answer in the retrieved chunks?](/my-blog/assets/images/posts/production-rag/diagnostic.svg)
 
 Look at what was retrieved, and ask whether the answer is in there. This is the single most clarifying idea I have encountered about RAG debugging. It gives every bad answer a specific address. Without it, debugging a RAG system feels like guessing. With it, you at least know which half of the system to investigate.
+
+## The Model Is Not a Reliable Service
+
+I had been thinking about LLMs as a capability that just works. A more useful framing: treat the model the same way you would treat any unreliable external service — non-deterministic, occasionally unavailable, and capable of returning plausible-but-wrong outputs with no error signal. The engineering response is to isolate it, observe it, and make it swappable.
+
+A factory pattern handles swappability. The rest of the code calls `get_llm()` and never references OpenAI or Anthropic directly. This is where LangChain's chat model wrappers genuinely earn their place — they normalise different provider APIs behind one consistent interface. Switching providers is a config change, not a code change.
+
+For operational resilience, retries handle the transient failures — network timeouts, rate limiting, brief provider outages. A library like `tenacity` wraps the LLM call with exponential backoff: wait 1 second, then 2, then up to 10, and give up after 3 attempts. The important distinction is that retries handle operational failures, not semantic ones. A retry will not make the model smarter. It will not fix a hallucination or a reasoning error. It will make the system resilient to infrastructure blips. These are two very different problems, and conflating them leads to retry loops that waste money without improving answers.
 
 ## MCP as an Interface to RAG
 
@@ -134,7 +174,22 @@ The last piece that struck me was the idea of structured observability across th
 
 I had not encountered Opik before, but the value was immediately obvious. In a traditional API, you measure response time and error rates. In a RAG system, you need to know much more: which phase was slow, how many tokens were consumed, what context the model actually received, what it returned, and what it cost. Without this, performance and cost are assumptions.
 
-A good pattern is to wrap the observability tool behind your own decorator so your RAG functions never reference it directly. If you switch tools tomorrow, one wrapper changes. The rest of the codebase is untouched. What you get in return is a trace tree per request — latency broken down by phase, token counts, model used, cost. When something is slow or expensive, there is a specific phase to investigate.
+A good pattern is to wrap the observability tool behind your own decorator so your RAG functions never reference it directly. If you switch from Opik to LangSmith or Arize Phoenix tomorrow, one wrapper changes. The rest of the codebase is untouched. What you get in return is a trace tree per request that looks something like this:
+
+```
+Query: "What is the expense policy?"
+├── [retrieval]  preprocess_query        12ms
+├── [retrieval]  embed_query             45ms
+├── [retrieval]  search_similar_chunks   38ms
+├── [retrieval]  rerank_results         210ms
+└── [generation] invoke_llm           1,240ms
+                 tokens_in:  842
+                 tokens_out: 156
+                 model: gpt-4o
+Total: 1,545ms | Cost: $0.014
+```
+
+This turns performance and cost from assumptions into measurable signals. Is reranking worth the 210ms it adds? Is the LLM call dominating cost? Did a prompt change improve token efficiency? These become answerable questions rather than speculation.
 
 The same approach extends to data lineage: preserve chunk IDs through the generation step, so when an answer is wrong, you can trace it deterministically back to which chunks the model used, and from there back to the source file. That kind of lineage turns debugging from speculation into investigation.
 
